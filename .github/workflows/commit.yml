@@ -15,7 +15,7 @@ jobs:
       matrix:
         device:
             - "iPhone 11"
-            - "iPad Air (4th generation)"
+            - "iPad Pro (9.7-inch)"
 
     steps:
       - name: "Checkout Project"
