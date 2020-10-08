@@ -36,4 +36,4 @@ jobs:
         with:
             destination: "platform=iOS Simulator,name=${{ matrix.device }},OS=14.0"
             result-bundle-path: Test.xcresult
-            result-bundle-name: "Test Result for ${{ matrix.device }}"
+            result-bundle-name: "Test results for ${{ matrix.device }}"
