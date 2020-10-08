@@ -21,6 +21,9 @@ jobs:
       - name: "Checkout Project"
         uses: actions/checkout@v2
 
+      - name: "Foo"
+        run: "ls -ld /Applications/Xcode*"
+
       - name: "Select Xcode 12.0.0"
         uses: devbotsxyz/xcode-select@master
         with:
