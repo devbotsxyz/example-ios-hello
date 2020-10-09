@@ -22,15 +22,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "Select Latest Xcode Stable"
-        uses: devbotsxyz/xcode-select@main
+        uses: devbotsxyz/xcode-select@v1
 
       - name: "Build (Simulator)"
-        uses: devbotsxyz/xcode-build@main
+        uses: devbotsxyz/xcode-build@work
         with:
             destination: "platform=iOS Simulator,name=${{ matrix.device}},OS=14.0"
 
       - name: "Test (Simulator)"
-        uses: devbotsxyz/xcode-test@main
+        uses: devbotsxyz/xcode-test@v1
         with:
             destination: "platform=iOS Simulator,name=${{ matrix.device }},OS=14.0"
             result-bundle-path: Test.xcresult
