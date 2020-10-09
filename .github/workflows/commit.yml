@@ -24,10 +24,11 @@ jobs:
       - name: "Select Latest Xcode Stable"
         uses: devbotsxyz/xcode-select@v1
 
-      - name: "Build (Simulator)"
-        uses: devbotsxyz/xcode-build@work
-        with:
-            destination: "platform=iOS Simulator,name=${{ matrix.device}},OS=14.0"
+      # TODO This does not work because of code signing. Why is that a problem on the simulator?
+      #- name: "Build (Simulator)"
+      #  uses: devbotsxyz/xcode-build@work
+      #  with:
+      #      destination: "platform=iOS Simulator,name=${{ matrix.device}},OS=14.0"
 
       - name: "Test (Simulator)"
         uses: devbotsxyz/xcode-test@v1
