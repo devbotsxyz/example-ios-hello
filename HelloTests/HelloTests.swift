@@ -23,6 +23,12 @@ class HelloTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let x = 10 // Unused variable
     }
+    
+    func testSomething() throws {
+        var y = 0
+        return
+        y = 1
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
