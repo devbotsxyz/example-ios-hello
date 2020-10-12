@@ -37,10 +37,10 @@ class HelloTests: XCTestCase {
         }
     }
     
-    func testWithCompileError() throws {
-        let foo = 10
-        foo = foo + "a"
-        print("\(foo)")
-    }
+//    func testWithCompileError() throws {
+//        let foo = 10
+//        foo = foo + "a"
+//        print("\(foo)")
+//    }
 
 }
