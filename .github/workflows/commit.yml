@@ -34,6 +34,7 @@ jobs:
       - name: "Build (Simulator)"
         uses: devbotsxyz/xcode-build@work
         with:
+          allow-provisioning-updates: true
           destination: "platform=iOS Simulator,name=${{ matrix.device}},OS=14.0"
           result-bundle-path: "Build.xcresult"
           result-bundle-name: "Build results for ${{ matrix.device }}"
