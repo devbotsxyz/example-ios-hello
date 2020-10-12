@@ -8,14 +8,14 @@ jobs:
 
   build-test:
     name: "Build & Test"
-    runs-on: macos-10.15
+    runs-on: "macos-10.15"
     timeout-minutes: 15
 
     strategy:
       matrix:
         device:
           - "iPhone 11"
-#          - "iPad Pro (9.7-inch)"
+#         - "iPad Pro (9.7-inch)"
 
     steps:
       - name: "Checkout Project"
@@ -24,23 +24,31 @@ jobs:
       - name: "Select Latest Xcode Stable"
         uses: devbotsxyz/xcode-select@v1
 
-      # TODO This does not work because of code signing. Why is that a problem on the simulator?
-      #- name: "Build (Simulator)"
-      #  uses: devbotsxyz/xcode-build@work
-      #  with:
-      #      destination: "platform=iOS Simulator,name=${{ matrix.device}},OS=14.0"
-
-      - name: "Test (Simulator)"
-        uses: devbotsxyz/xcode-test@v1
+      - name: "Build (Simulator)"
+        uses: devbotsxyz/xcode-build@work
         with:
-          destination: "platform=iOS Simulator,name=${{ matrix.device }},OS=14.0"
-          result-bundle-path: Test.xcresult
-          result-bundle-name: "Test results for ${{ matrix.device }}"
-          constraints: only-testing:HelloTests
+          code-signing-identity: "-"
+          destination: "platform=iOS Simulator,name=${{ matrix.device}},OS=14.0"
+          result-bundle-path: "Build.xcresult"
+          result-bundle-name: "Build results for ${{ matrix.device }}"
 
       - name: "Create annotations from result bundle"
         uses: st3fan/xcresult-annotate@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          result-bundle-path: Test.xcresult
+          result-bundle-path: "Build.xcresult"
+
+#     - name: "Test (Simulator)"
+#       uses: devbotsxyz/xcode-test@v1
+#       with:
+#         destination: "platform=iOS Simulator,name=${{ matrix.device }},OS=14.0"
+#         result-bundle-path: "Test.xcresult"
+#         result-bundle-name: "Test results for ${{ matrix.device }}"
+#         constraints: only-testing:HelloTests
+
+#     - name: "Create annotations from result bundle"
+#       uses: st3fan/xcresult-annotate@main
+#       with:
+#         github-token: ${{ secrets.GITHUB_TOKEN }}
+#         result-bundle-path: "Test.xcresult"
 
