@@ -35,8 +35,8 @@ jobs:
         uses: devbotsxyz/xcode-build@work
         with:
           destination: "platform=iOS Simulator,name=${{ matrix.device}},OS=14.0"
-          #result-bundle-path: "Build.xcresult"
-          #result-bundle-name: "Build results for ${{ matrix.device }}"
+          result-bundle-path: "Build.xcresult"
+          result-bundle-name: "Build results for ${{ matrix.device }}"
 
       - name: "Create annotations from result bundle"
         uses: st3fan/xcresult-annotate@main
