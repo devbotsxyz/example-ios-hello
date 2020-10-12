@@ -24,12 +24,19 @@ jobs:
       - name: "Select Latest Xcode Stable"
         uses: devbotsxyz/xcode-select@v1
 
+      - name: "Import Certificate: Development"
+        uses: devbotsxyz/import-signing-certificate@main
+        with:
+          certificate-data: ${{ secrets.DEVELOPMENT_CERTIFICATE_DATA }}
+          certificate-passphrase: ${{ secrets.DEVELOPMENT_CERTIFICATE_PASSPHRASE }}
+          keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
+
       - name: "Build (Simulator)"
         uses: devbotsxyz/xcode-build@work
         with:
           destination: "platform=iOS Simulator,name=${{ matrix.device}},OS=14.0"
-          result-bundle-path: "Build.xcresult"
-          result-bundle-name: "Build results for ${{ matrix.device }}"
+          #result-bundle-path: "Build.xcresult"
+          #result-bundle-name: "Build results for ${{ matrix.device }}"
 
       - name: "Create annotations from result bundle"
         uses: st3fan/xcresult-annotate@main
