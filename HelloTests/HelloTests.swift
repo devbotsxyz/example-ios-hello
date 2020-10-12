@@ -36,5 +36,11 @@ class HelloTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testWithCompileError() throws {
+        let foo = 10
+        foo = foo + "a"
+        print("\(foo)")
+    }
 
 }
