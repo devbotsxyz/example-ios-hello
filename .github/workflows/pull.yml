@@ -35,7 +35,7 @@ jobs:
         if: ${{ always() }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          result-bundle-path: "../Test.xcresult"
+          result-bundle-path: /Users/runner/work/example-ios-hello/example-ios-hello/Test.xcresult
 
       - name: Foo
         run: find ../ -ls
