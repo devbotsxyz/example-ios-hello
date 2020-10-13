@@ -32,7 +32,7 @@ jobs:
 
       - name: Foo
         if: ${{ always() }}
-        run: find . -ls
+        run: find ../ -ls
 
       - name: "Create annotations from result bundle"
         uses: devbotsxyz/xcresult-annotate@work
