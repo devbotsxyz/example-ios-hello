@@ -21,8 +21,10 @@ jobs:
       - name: "Checkout Project"
         uses: actions/checkout@v2
 
-      - name: "Select Latest Xcode Stable"
+      - name: "Select Latest Xcode Beta"
         uses: devbotsxyz/xcode-select@v1
+        with:
+          beta: true
 
       - name: "Import Certificate: Development"
         uses: devbotsxyz/import-signing-certificate@main
