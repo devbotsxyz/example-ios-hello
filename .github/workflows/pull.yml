@@ -1,12 +1,10 @@
-name: "Build & Test"
+name: Pull Request
 
-on:
-  push:
-    branches: [main]
+on: [pull_request]
 
 jobs:
 
-  build-test:
+  Test:
     name: "Build & Test"
     runs-on: "macos-10.15"
     timeout-minutes: 15
