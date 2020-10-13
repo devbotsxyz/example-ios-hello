@@ -30,14 +30,12 @@ jobs:
           result-bundle-name: "Test results for ${{ matrix.device }}"
           constraints: only-testing:HelloTests
 
-      - name: Foo
-        if: ${{ always() }}
-        run: find ../ -ls
-
       - name: "Create annotations from result bundle"
         uses: devbotsxyz/xcresult-annotate@work
         if: ${{ always() }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          result-bundle-path: "example-ios-hello/Test.xcresult"
+          result-bundle-path: "../Test.xcresult"
 
+      - name: Foo
+        run: find ../ -ls
