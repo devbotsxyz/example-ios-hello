@@ -38,4 +38,5 @@ jobs:
           result-bundle-path: /Users/runner/work/example-ios-hello/example-ios-hello/Test.xcresult
 
       - name: Foo
-        run: find ../ -ls
+        if: ${{ always() }}
+        run: find /Users/runner/work -ls
