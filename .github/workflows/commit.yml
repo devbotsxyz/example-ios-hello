@@ -25,7 +25,7 @@ jobs:
         uses: devbotsxyz/xcode-select@v1
 
       - name: "Test (Simulator)"
-        uses: devbotsxyz/xcode-test@v1
+        uses: devbotsxyz/xcode-test@work
         with:
           destination: "platform=iOS Simulator,name=${{ matrix.device }},OS=14.0"
           result-bundle-path: "Test.xcresult"
@@ -33,7 +33,7 @@ jobs:
           constraints: only-testing:HelloTests
 
       - name: "Create annotations from result bundle"
-        uses: devbotsxyz/xcresult-annotate@main
+        uses: devbotsxyz/xcresult-annotate@work
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-bundle-path: "Test.xcresult"
