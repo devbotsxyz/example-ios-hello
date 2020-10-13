@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
 
-        let something = 3.14
+        let something = 3.14 // Triggers a warning
     }
 
     // MARK: UISceneSession Lifecycle
