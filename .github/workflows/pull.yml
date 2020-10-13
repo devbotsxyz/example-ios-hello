@@ -33,7 +33,7 @@ jobs:
           constraints: only-testing:HelloTests
 
       - name: "Create annotations from result bundle"
-        uses: devbots/xcresult-annotate@main
+        uses: devbotsxyz/xcresult-annotate@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-bundle-path: "Test.xcresult"
