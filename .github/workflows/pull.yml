@@ -30,6 +30,10 @@ jobs:
           result-bundle-name: "Test results for ${{ matrix.device }}"
           constraints: only-testing:HelloTests
 
+      - name: Foo
+        if: ${{ always() }}
+        run: find . -ls
+
       - name: "Create annotations from result bundle"
         uses: devbotsxyz/xcresult-annotate@work
         if: ${{ always() }}
