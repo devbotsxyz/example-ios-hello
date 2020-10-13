@@ -19,10 +19,8 @@ jobs:
       - name: "Checkout Project"
         uses: actions/checkout@v2
 
-      - name: "Select Latest Xcode Beta"
+      - name: "Select Latest XcodeBeta"
         uses: devbotsxyz/xcode-select@v1
-        with:
-          beta: true
 
       - name: "Test (Simulator)"
         uses: devbotsxyz/xcode-test@v1
