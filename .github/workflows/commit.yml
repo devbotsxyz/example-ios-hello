@@ -31,13 +31,13 @@ jobs:
           certificate-passphrase: ${{ secrets.DEVELOPMENT_CERTIFICATE_PASSPHRASE }}
           keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
 
-      - name: "Test (Simulator)"
-        uses: devbotsxyz/xcode-test@v1
-        with:
-          destination: "platform=iOS Simulator,name=${{ matrix.device }},OS=14.0"
-          result-bundle-path: "Test.xcresult"
-          result-bundle-name: "Test results for ${{ matrix.device }}"
-          #constraints: only-testing:HelloTests
+#     - name: "Test (Simulator)"
+#       uses: devbotsxyz/xcode-test@v1
+#       with:
+#         destination: "platform=iOS Simulator,name=${{ matrix.device }},OS=14.0"
+#         result-bundle-path: "Test.xcresult"
+#         result-bundle-name: "Test results for ${{ matrix.device }}"
+#         #constraints: only-testing:HelloTests
 
 #     - name: "Create annotations from result bundle"
 #       uses: st3fan/xcresult-annotate@main
