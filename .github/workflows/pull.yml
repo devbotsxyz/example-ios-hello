@@ -19,25 +19,38 @@ jobs:
       - name: "Checkout Project"
         uses: actions/checkout@v2
 
-      - name: "Select Latest XcodeBeta"
+      - name: "Select Latest Stable Xcode"
         uses: devbotsxyz/xcode-select@v1
 
+      - name: "Build (Simulator)"
+        id: build
+        uses: devbotsxyz/xcode-build@work
+        with:
+          disable-code-signing: true
+          destination: "platform=iOS Simulator,name=${{ matrix.device }},OS=14.0"
+          result-bundle-path: "Build.xcresult"
+          result-bundle-name: "Build results for ${{ matrix.device }}"
+
+#      - name: "Create Build Annotations"
+#        uses: devbotsxyz/xcresult-annotate@work
+#        if: ${{ always() }}
+#        with:
+#          github-token: "${{ secrets.GITHUB_TOKEN }}"
+#          result-bundle-path: "${{ steps.build.outputs.result-bundle-path }}"
+
       - name: "Test (Simulator)"
+        id: test
         uses: devbotsxyz/xcode-test@work
         with:
+          disable-code-signing: true
           destination: "platform=iOS Simulator,name=${{ matrix.device }},OS=14.0"
           result-bundle-path: "Test.xcresult"
           result-bundle-name: "Test results for ${{ matrix.device }}"
-          constraints: only-testing:HelloTests
 
-      - name: Foo
-        if: ${{ always() }}
-        run: find . -ls
-
-      - name: "Create annotations from result bundle"
-        uses: devbotsxyz/xcresult-annotate@work
-        if: ${{ always() }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          result-bundle-path: "example-ios-hello/Test.xcresult"
+#      - name: "Create Test Annotations"
+#        uses: devbotsxyz/xcresult-annotate@work
+#        if: ${{ always() }}
+#        with:
+#          github-token: "${{ secrets.GITHUB_TOKEN }}"
+#          result-bundle-path: "${{ steps.test.outputs.result-bundle-path }}"
 
