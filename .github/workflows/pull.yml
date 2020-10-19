@@ -21,6 +21,8 @@ jobs:
 
       - name: "Select Latest Stable Xcode"
         uses: devbotsxyz/xcode-select@v1
+        with:
+          beta: true
 
       - name: "Build (Simulator)"
         id: build
